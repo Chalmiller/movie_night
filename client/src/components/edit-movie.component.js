@@ -17,6 +17,7 @@ export default class EditMovie extends Component {
             username: '',
             description: '',
             genre: '',
+            poster: '',
             date: new Date(),
             users: []
         }
@@ -27,6 +28,7 @@ export default class EditMovie extends Component {
             .then(res => {
                 this.setState({
                     username: res.data.username,
+                    title: res.data.title,
                     description: res.data.description,
                     genre: res.data.genre,
                     date: new Date(res.data.date)

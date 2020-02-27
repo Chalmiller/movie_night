@@ -8,6 +8,7 @@ export default class CreateMovie extends Component {
         super(props);
 
         this.onChangeUsername = this.onChangeUsername.bind(this);
+        this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeGenre = this.onChangeGenre.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
@@ -15,8 +16,10 @@ export default class CreateMovie extends Component {
 
         this.state = {
             username: '',
+            title: '',
             description: '',
-            grenre: '',
+            genre: '',
+            poster: '',
             date: new Date(),
             users: []
         }
@@ -41,6 +44,12 @@ export default class CreateMovie extends Component {
         })
     }
 
+    onChangeTitle(e) {
+        this.setState({
+            title: e.target.value
+        })
+    }
+
     onChangeDescription(e) {
         this.setState({
             description: e.target.value
@@ -62,18 +71,30 @@ export default class CreateMovie extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        const movie = {
+        let movie = {
             username: this.state.username,
+            title: this.state.title,
             description: this.state.description,
             genre: this.state.genre,
+            poster: this.state.poster,
             date: this.state.date
         }
+        
+        const apiString = this.state.title.replace(/ /g,"+");
+        const uri = "http://www.omdbapi.com/?apikey=5c5dfb&t=" + apiString
+        
+        axios.get(uri)
+            .then(response => {
+                console.log(response);
+                movie.description = response.data.Plot
+                movie.genre = response.data.Genre
+                movie.poster = response.data.Poster
+                console.log(movie)
+                return axios.post('http://localhost:5000/movies/add', movie)
+            }).then(response => console.log(response.data))
+        
 
-        console.log(movie);
-        axios.post('http://localhost:5000/movies/add', movie)
-            .then(res => console.log(res.data));
-
-        window.location = '/';
+        // window.location = '/';
     }
 
     render() {
@@ -99,21 +120,29 @@ export default class CreateMovie extends Component {
                         </select> 
                     </div>
                     <div className='form-group'>
+                        <label>Title: </label>
+                        <input type='text'
+                        required
+                        className='form-control'
+                        value={this.state.title}
+                        onChange={this.onChangeTitle} />
+                    </div>
+                    {/* <div className='form-group'>
                         <label>Description: </label>
                         <input type='text'
                         required
                         className='form-control'
                         value={this.state.description}
                         onChange={this.onChangeDescription} />
-                    </div>
-                    <div className='form-group'>
+                    </div> */}
+                    {/* <div className='form-group'>
                         <label>Genre: </label>
                         <input type='text'
                         required
                         className='form-control'
                         value={this.state.genre}
                         onChange={this.onChangeGenre} />
-                    </div>
+                    </div> */}
                     <div className='form-group'>
                         <label>Date: </label>
                         <div>
@@ -124,7 +153,7 @@ export default class CreateMovie extends Component {
                         </div>
                     </div>
                     <div className='form-group'>
-                        <input type='submit' value='Create Exercise Log' className='btn btn-primary' />
+                        <input type='submit' value='Create Movie Request' className='btn btn-primary' />
                     </div>
                 </form>
             </div>

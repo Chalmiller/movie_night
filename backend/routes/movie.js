@@ -3,20 +3,24 @@ let Movie = require('../models/movie.model');
 
 router.route('/').get((req, res) => {
     Movie.find()
-    .then(exercise => res.json(exercise))
+    .then(movie => res.json(movie))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/add').post((req, res) => {
     const username = req.body.username;
+    const title = req.body.title;
     const description = req.body.description;
-    const genre = Number(req.body.genre);
+    const genre = req.body.genre;
+    const poster = req.body.poster;
     const date = Date.parse(req.body.date);
 
     const newMovie = new Movie({
         username,
+        title,
         description,
         genre,
+        poster,
         date
     });
 
@@ -41,8 +45,10 @@ router.route('/update/:id').post((req, res) => {
     Movie.findById(req.params.id)
         .then(movie => {
             movie.username = req.body.username;
+            movie.title = req.body.title;
             movie.description = req.body.description;
             movie.genre = req.body.genre;
+            movie.poster = req.body.poster;
             movie.date = new Date(req.body.date);
 
             movie.save()

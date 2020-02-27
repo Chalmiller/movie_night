@@ -4,10 +4,11 @@ import axios from 'axios';
 
 const Movie = props => (
   <tr>
-    <td>{props.movie.username}</td>
-    <td>{props.movie.description}</td>
-    <td>{props.movie.genre}</td>
-    <td>{props.movie.date.substring(0,10)}</td>
+    <td><img src={ props.movie.poster }  alt="movie_poster" className="card card-body mb-3" width="200px" height="200px"/></td>
+    <td style={{ color: "white" }} >{props.movie.username}</td>
+    <td style={{ color: "white" }}>{props.movie.description}</td>
+    <td style={{ color: "white" }}>{props.movie.genre}</td>
+    <td style={{ color: "white" }}>{props.movie.date.substring(0,10)}</td>
     <td>
       <Link to={"/edit/"+props.movie._id}>edit</Link> | <a href="#" onClick={() => { props.deleteMovie(props.movie._id) }}>delete</a>
     </td>
@@ -33,7 +34,7 @@ export default class MovieList extends Component {
       })
   }
 
-  deleteExercise(id) {
+  deleteMovie(id) {
     axios.delete('http://localhost:5000/movies/' + id)
       .then(response => { console.log(response.data)});
 
@@ -44,17 +45,18 @@ export default class MovieList extends Component {
 
   moviesList() {
     return this.state.movies.map(currMovie => {
-      return <Exercise movie={currMovie} deleteMovie={this.deleteMovie} key={currMovie._id}/>;
+      return <Movie movie={currMovie} deleteMovie={this.deleteMovie} key={currMovie._id}/>;
     })
   }
 
   render() {
     return (
       <div>
-        <h3>Suggested Movies</h3>
+        <h3 style={{ color: "white", textAlign: "center" }} >Suggested Movies</h3>
         <table className="table">
           <thead className="thead-light">
             <tr>
+              <th>Movie Poster</th>
               <th>Username</th>
               <th>Description</th>
               <th>Genre</th>
