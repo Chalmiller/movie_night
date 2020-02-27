@@ -83,7 +83,7 @@ export default class CreateMovie extends Component {
         }
         
         const apiString = this.state.title.replace(/ /g,"+");
-        const uri = "http://www.omdbapi.com/?apikey=5c5dfb&t=" + apiString
+        const uri = "https://www.omdbapi.com/?apikey=5c5dfb&t=" + apiString
         
         axios.get(uri)
             .then(response => {
