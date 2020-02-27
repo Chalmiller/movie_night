@@ -100,10 +100,10 @@ export default class CreateMovie extends Component {
     render() {
         return (
             <div>
-                <h3>Create New Movie Suggestion</h3>
+                <h3 style={{ color: "white" }}>Create New Movie Suggestion</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className='form-group'>
-                        <label>Username: </label>
+                        <label style={{ color: "white" }}>Username: </label>
                         <select ref='userInput'
                                 required 
                                 className='form-control'
@@ -120,31 +120,15 @@ export default class CreateMovie extends Component {
                         </select> 
                     </div>
                     <div className='form-group'>
-                        <label>Title: </label>
+                        <label style={{ color: "white" }}>Title: </label>
                         <input type='text'
                         required
                         className='form-control'
                         value={this.state.title}
                         onChange={this.onChangeTitle} />
                     </div>
-                    {/* <div className='form-group'>
-                        <label>Description: </label>
-                        <input type='text'
-                        required
-                        className='form-control'
-                        value={this.state.description}
-                        onChange={this.onChangeDescription} />
-                    </div> */}
-                    {/* <div className='form-group'>
-                        <label>Genre: </label>
-                        <input type='text'
-                        required
-                        className='form-control'
-                        value={this.state.genre}
-                        onChange={this.onChangeGenre} />
-                    </div> */}
                     <div className='form-group'>
-                        <label>Date: </label>
+                        <label style={{ color: "white" }}>Date: </label>
                         <div>
                             <DatePicker 
                                 selected={this.state.date}

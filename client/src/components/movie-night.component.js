@@ -3,7 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export default function MovieNight() {
     return (
-        <div>
+        <div style={{ color: "white" }}>
             Hello and welcome to the Movie Night :D
         </div>
     )
