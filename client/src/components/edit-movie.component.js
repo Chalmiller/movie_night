@@ -25,8 +25,8 @@ export default class EditMovie extends Component {
 
     componentDidMount() {
         // Local Dev
-        // axios.get("http://localhost:5000/movies/" + this.props.match.params.id)
-        axios.get("/movies/" + this.props.match.params.id)
+        axios.get("http://localhost:5000/movies/" + this.props.match.params.id)
+        // axios.get("/movies/" + this.props.match.params.id)
             .then(res => {
                 this.setState({
                     username: res.data.username,
@@ -38,8 +38,8 @@ export default class EditMovie extends Component {
             })
             .catch(err => console.log(err));
         // Local Dev
-        // axios.get("http://localhost:5000/users/")
-        axios.get("/users/")
+        axios.get("http://localhost:5000/users/")
+        // axios.get("/users/")
             .then(res => {
                 if (res.data.length > 0) {
                     this.setState({
@@ -87,8 +87,8 @@ export default class EditMovie extends Component {
 
         console.log(movie);
         // Local Dev
-        // axios.post('http://localhost:5000/movies/update/' + this.props.match.params.id, movie)
-        axios.post('/movies/update/' + this.props.match.params.id, movie)
+        axios.post('http://localhost:5000/movies/update/' + this.props.match.params.id, movie)
+        // axios.post('/movies/update/' + this.props.match.params.id, movie)
             .then(res => console.log(res.data));
 
         window.location = '/';

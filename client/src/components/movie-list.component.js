@@ -26,8 +26,8 @@ export default class MovieList extends Component {
 
   componentDidMount() {
     // Local Dev
-    // axios.get('http://localhost:5000/movies/')
-    axios.get('/movies/')
+    axios.get('http://localhost:5000/movies/')
+    // axios.get('/movies/')
       .then(response => {
         this.setState({ movies: response.data })
       })
@@ -38,8 +38,8 @@ export default class MovieList extends Component {
 
   deleteMovie(id) {
     // Local Dev
-    // axios.delete('http://localhost:5000/movies/' + id)
-    axios.delete('/movies/' + id)
+    axios.delete('http://localhost:5000/movies/' + id)
+    // axios.delete('/movies/' + id)
       .then(response => { console.log(response.data)});
 
     this.setState({
