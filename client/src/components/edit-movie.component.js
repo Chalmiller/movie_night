@@ -97,10 +97,10 @@ export default class EditMovie extends Component {
     render() {
         return (
             <div>
-                <h3>Edit Movie Suggestion</h3>
+                <h3 style={{ color: "white" }}>Edit Movie Suggestion</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className='form-group'>
-                        <label>Username: </label>
+                        <label style={{ color: "white" }}>Username: </label>
                         <select ref='userInput'
                                 required 
                                 className='form-control'
@@ -117,7 +117,7 @@ export default class EditMovie extends Component {
                         </select> 
                     </div>
                     <div className='form-group'>
-                        <label>Description: </label>
+                        <label style={{ color: "white" }}>Description: </label>
                         <input type='text'
                         required
                         className='form-control'
@@ -125,7 +125,7 @@ export default class EditMovie extends Component {
                         onChange={this.onChangeDescription} />
                     </div>
                     <div className='form-group'>
-                        <label>Genre: </label>
+                        <label style={{ color: "white" }}>Genre: </label>
                         <input type='text'
                         required
                         className='form-control'
@@ -133,7 +133,7 @@ export default class EditMovie extends Component {
                         onChange={this.onChangeGenre} />
                     </div>
                     <div className='form-group'>
-                        <label>Date: </label>
+                        <label style={{ color: "white" }}>Date: </label>
                         <div>
                             <DatePicker 
                                 selected={this.state.date}

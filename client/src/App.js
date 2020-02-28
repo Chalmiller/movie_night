@@ -10,6 +10,7 @@ import EditMovie from './components/edit-movie.component.js';
 import CreateMovie from './components/create-movie.component.js';
 import CreateUser from './components/create-user.component.js';
 import MovieNight from './components/movie-night.component.js';
+import CreateComment from './components/create-comment.component.js';
 import Logo from './components/logo.component';
 
 const particlesOptions = {
@@ -59,7 +60,9 @@ function App() {
           <br />
           <Route path='/' exact component={MovieNight} />
           <Route path='/movies' exact component={MovieList} />
-          <Route path='/edit/:id' exact component={EditMovie} />
+          <Route path='/edit_movie/:id' exact component={EditMovie} />
+          {/* <Route path='/edit_comment/:id' exact component={EditComment} /> */}
+          <Route path='/comments' exact component={CreateComment} />
           <Route path='/create' exact component={CreateMovie} />
           <Route path='/user' exact component={CreateUser} />
         </div>

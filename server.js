@@ -34,7 +34,7 @@ const commentRouter = require('./backend/routes/movie_comment');
 
 app.use('/movies', moviesRouter);
 app.use('/users', usersRouter);
-app.use('/comment', commentRouter);
+app.use('/comments', commentRouter);
 
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {

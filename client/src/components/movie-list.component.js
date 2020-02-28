@@ -6,11 +6,17 @@ const Movie = props => (
   <tr>
     <td><img src={ props.movie.poster }  alt="movie_poster" className="card card-body mb-3" width="200px" height="200px"/></td>
     <td style={{ color: "white" }} >{props.movie.username}</td>
-    <td style={{ color: "white" }}>{props.movie.description}</td>
+    <td style={{ color: "white" }}>
+      {props.movie.description}
+      <hr />
+      <div className='form-group'>
+        <Link to={"/comments/"} className='btn btn-primary'>Comments Section</Link>
+      </div>
+    </td>
     <td style={{ color: "white" }}>{props.movie.genre}</td>
     <td style={{ color: "white" }}>{props.movie.date.substring(0,10)}</td>
     <td>
-      <Link to={"/edit/"+props.movie._id}>edit</Link> | <a href="#" onClick={() => { props.deleteMovie(props.movie._id) }}>delete</a>
+      <Link to={"/edit_movie/"+props.movie._id}>edit</Link> | <a href="#" onClick={() => { props.deleteMovie(props.movie._id) }}>delete</a>
     </td>
   </tr>
 )

@@ -6,7 +6,7 @@ export default class Navbar extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+                <nav className="navbar navbar-dark bg-dark navbar-expand-lg" style={{ padding: "20px", }}>
                     <Link to='/' className="navbar-brand" >Movie Night!</Link>
                     <div className="collapse navbar-collapse">
                         <ul className="navbar-nav mr-auto">
