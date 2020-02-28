@@ -1,18 +1,18 @@
 const router = require('express').Router();
-let User = require('../models/movie_user.model');
+let Comment = require('../models/movie_comment.model');
 
 router.route('/').get((req, res) => {
-    User.find()
+    Comment.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/add').post((req, res) => {
-    const username = req.body.username;
-    const newUser = new User({username});
+    const comment = req.body.comment;
+    const newComment = new Comment({comment});
 
-    newUser.save()
-    .then(() => res.json('User added!'))
+    newComment.save()
+    .then(() => res.json('Comment added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
