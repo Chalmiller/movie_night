@@ -98,7 +98,7 @@ export default class CreateMovie extends Component {
             }).then(response => console.log(response.data))
         
 
-        window.location = '/';
+        // window.location = '/';
     }
 
     render() {
