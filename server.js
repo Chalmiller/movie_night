@@ -17,7 +17,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('http://localhost:3000/graphql', graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
 }))

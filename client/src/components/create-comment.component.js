@@ -90,7 +90,7 @@ export default class CreateComment extends Component {
         return (
             <div>
                 <div className="navbar-dark bg-dark" style={dropdownStyle} >
-                    <Collapsible className="navbar-brand" trigger="Comment">
+                    <Collapsible className="navbar-brand" trigger="Comment -- (Click to unfold)">
                         <form onSubmit={this.onSubmit}>
                             <div className='form-group'>
                                 <label style={{ color: "white" }}>Username: </label>

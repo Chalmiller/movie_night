@@ -1,7 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import DatePicker from 'react-datepicker';
+import gql from 'graphql-tag';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
+
+const SEARCH_QUERY = gql`
+  query SEARCH_QUERY($movie: String!) {
+    movieInfo(movie: $movie) {
+      Title
+      Year
+      Rated
+      Released
+      Director
+      Actors
+      Plot
+      Poster
+      Ratings {
+          Source
+          Value
+      }
+    }
+  }
+`;
 
 export default class CreateMovie extends Component {
     constructor(props) {
@@ -102,6 +122,7 @@ export default class CreateMovie extends Component {
     }
 
     render() {
+        // let { movie } = this.props.match.params;
         return (
             <div>
                 <h3 style={{ color: "white" }}>Create New Movie Suggestion</h3>
