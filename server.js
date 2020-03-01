@@ -1,5 +1,7 @@
 const express = require('express');
+const graphqlHTTP = require('express-graphql');
 const cors = require('cors');
+const schema = require('./schema');
 const mongoose = require('mongoose');
 const path = require('path');
 
@@ -15,6 +17,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('http://localhost:3000/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+}))
 
 // Local development
 const uri = process.env.ATLAS_URI;

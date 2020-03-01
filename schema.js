@@ -1,9 +1,9 @@
 const axios = require('axios')
 
-const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLBoolean, GraphQLList, GraphQLSchema } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLSchema } = require('graphql');
 
-// Launch Type
-const LaunchType = new GraphQLObjectType({
+// Search Type
+const SearchType = new GraphQLObjectType({
     name: 'Launch',
     fields: () => ({
         Title: {
@@ -44,7 +44,7 @@ const LaunchType = new GraphQLObjectType({
 
 // Links Type
 const RatingsType = new GraphQLObjectType({
-    name: 'Links',
+    name: 'Ratings',
     fields: () => ({
         Source: {
             type: GraphQLString
@@ -59,8 +59,8 @@ const RatingsType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        launch: {
-            type: LaunchType,
+        movieInfo: {
+            type: SearchType,
             args: {
                 movie: { type: GraphQLString }
             },
