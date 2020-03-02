@@ -6,7 +6,7 @@ jobs:
      steps:
        - checkout
        - run: npm install
-      #  - run: CI=true npm run build
+       - run: CI=true npm run build --prefix client
    test:
      docker:
        - image: circleci/node:8.9

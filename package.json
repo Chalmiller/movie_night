@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --prefix client --env=jsdom ",
     "build": "npm run build --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
