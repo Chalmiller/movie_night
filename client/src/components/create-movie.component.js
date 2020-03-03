@@ -40,6 +40,10 @@ export default class CreateMovie extends Component {
             description: '',
             genre: '',
             poster: '',
+            comment: [{
+                title: '',
+                comments: ''
+            }],
             date: new Date(),
             users: []
         }
@@ -99,6 +103,7 @@ export default class CreateMovie extends Component {
             description: this.state.description,
             genre: this.state.genre,
             poster: this.state.poster,
+            comment: this.state.comment,
             date: this.state.date
         }
         
@@ -107,11 +112,9 @@ export default class CreateMovie extends Component {
         
         axios.get(uri)
             .then(response => {
-                console.log(response);
                 movie.description = response.data.Plot
                 movie.genre = response.data.Genre
                 movie.poster = response.data.Poster
-                console.log(movie)
                 // Local Dev
                 return axios.post('http://localhost:5000/movies/add', movie)
                 // return axios.post('/movies/add', movie)

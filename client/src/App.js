@@ -11,19 +11,9 @@ import CreateMovie from './components/create-movie.component.js';
 import CreateUser from './components/create-user.component.js';
 import MovieNight from './components/movie-night.component.js';
 import CreateComment from './components/create-comment.component.js';
+import CreateMovieComment from './components/movie-comment.component';
 import Logo from './components/logo.component';
 
-const particlesOptions = {
-  particles: {
-    number: {
-      value: 30,
-      density: {
-        enable: true,
-        value_area: 800
-      }
-    }
-  }
-}
 
 function App() {
   return (
@@ -60,6 +50,7 @@ function App() {
           <br />
           <Route path='/' exact component={MovieNight} />
           <Route path='/movies' exact component={MovieList} />
+          <Route path='/movies/:id' exact component={CreateMovieComment} />
           <Route path='/edit_movie/:id' exact component={EditMovie} />
           {/* <Route path='/edit_comment/:id' exact component={EditComment} /> */}
           <Route path='/comments' exact component={CreateComment} />

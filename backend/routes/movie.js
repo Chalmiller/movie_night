@@ -8,21 +8,7 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const username = req.body.username;
-    const title = req.body.title;
-    const description = req.body.description;
-    const genre = req.body.genre;
-    const poster = req.body.poster;
-    const date = Date.parse(req.body.date);
-
-    const newMovie = new Movie({
-        username,
-        title,
-        description,
-        genre,
-        poster,
-        date
-    });
+    const newMovie = new Movie(req.body);
 
     newMovie.save()
     .then(() => res.json('Movie added!'))
@@ -49,6 +35,23 @@ router.route('/update/:id').post((req, res) => {
             movie.description = req.body.description;
             movie.genre = req.body.genre;
             movie.poster = req.body.poster;
+            movie.date = new Date(req.body.date);
+            movie.save()
+            .then(() => res.json('Movie updated!'))
+            .catch(err => res.status(400).json('Error: ' + err));
+        })
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/update/comment/:id').post((req, res) => {
+    Movie.findById(req.params.id)
+        .then(movie => {
+            movie.username = req.body.username;
+            movie.title = req.body.title;
+            movie.description = req.body.description;
+            movie.genre = req.body.genre;
+            movie.poster = req.body.poster;
+            movie.comment = req.body.comment;
             movie.date = new Date(req.body.date);
 
             movie.save()

@@ -10,7 +10,7 @@ const Movie = props => (
       {props.movie.description}
       <hr />
       <div className='form-group'>
-        <Link to={"/comments/"} className='btn btn-primary'>Comments Section</Link>
+        <Link to={"/movies/"+props.movie._id} className='btn btn-primary'>Comments Section</Link>
       </div>
     </td>
     <td style={{ color: "white" }}>{props.movie.genre}</td>
