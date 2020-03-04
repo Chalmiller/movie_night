@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import Particles from 'react-particles-js';
+import { setMovieTitle } from '../actions';
 
-import Navbar from './components/navbar.component.js';
-import MovieList from './components/movie-list.component.js';
-import EditMovie from './components/edit-movie.component.js';
-import CreateMovie from './components/create-movie.component.js';
-import CreateUser from './components/create-user.component.js';
-import MovieNight from './components/movie-night.component.js';
-import CreateComment from './components/create-comment.component.js';
-import CreateMovieComment from './components/movie-comment.component';
-import Logo from './components/logo.component';
+import Navbar from '../components/navbar.component.js';
+import MovieList from '../components/movie-list.component.js';
+import EditMovie from '../components/edit-movie.component.js';
+import CreateMovie from '../components/create-movie.component.js';
+import CreateUser from '../components/create-user.component.js';
+import MovieNight from '../components/movie-night.component.js';
+import CreateComment from '../components/create-comment.component.js';
+import CreateMovieComment from '../components/movie-comment.component';
+import Logo from '../components/logo.component';
 
-export default class App extends Component {
+const mapStateToProps = state => {
+  return {
+    title: state.setTitle.title
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onTitleChange: (event) => dispatch(setMovieTitle(event.target.value))
+  }
+}
+
+class App extends Component {
   constructor(props) {
     super(props)
   }
 
   componentDidMount() {
-    console.log(this.props.store.getState());
+    console.log(this.props.store);
   }
 
   render() {
@@ -70,3 +84,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
