@@ -21,7 +21,7 @@ export default class CreateMovieComment extends Component {
             description: '',
             genre: '',
             poster: '',
-            comment: {},
+            comment: [],
             date: new Date(),
             users: []
         }
@@ -85,17 +85,15 @@ export default class CreateMovieComment extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        let comment = {
-            username: this.state.username,
-            title: this.state.title,
-            description: this.state.title,
-            genre: this.state.genre,
-            poster: this.state.poster,
-            comment: this.state.comment,
-            date: this.state.date
+        console.log("Here is the current state" + this.state)
+
+        let movie_comment = {
+            title: this.state.comment.title,
+            comments: this.state.comment.comments
+
         }
         
-        axios.post('http://localhost:5000/movies/update/comment/' + this.props.match.params.id, comment)
+        axios.post('http://localhost:5000/movies/update/comment/' + this.props.match.params.id, movie_comment)
         // axios.post('/movies/update/' + this.props.match.params.id, movie)
             .then(res => console.log(res.data));
 
