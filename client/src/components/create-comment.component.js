@@ -26,8 +26,8 @@ export default class CreateComment extends Component {
 
     componentDidMount() {
         // Local Dev
-        axios.get("http://localhost:5000/users")
-        // axios.get("/users")
+        // axios.get("http://localhost:5000/users")
+        axios.get("/users")
             .then(res => {
                 if (res.data.length > 0) {
                     this.setState({
@@ -73,8 +73,8 @@ export default class CreateComment extends Component {
             date: this.state.date
         }
         
-        axios.post('http://localhost:5000/comments/add/', comment)
-        // axios.post('/comments/add/' + this.props.match.params.id, comment)
+        // axios.post('http://localhost:5000/comments/add/', comment)
+        axios.post('/comments/add/' + this.props.match.params.id, comment)
             .then(res => console.log(res.data));
 
         window.location = '/comments';

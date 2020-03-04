@@ -24,8 +24,8 @@ export default class CommentList extends Component {
 
   componentDidMount() {
     // Local Dev
-    axios.get('http://localhost:5000/comments/')
-    // axios.get('/comments/')
+    // axios.get('http://localhost:5000/comments/')
+    axios.get('/comments/')
       .then(response => {
           console.log(response.data)
         this.setState({ comments: response.data })
@@ -37,8 +37,8 @@ export default class CommentList extends Component {
 
   deleteComment(id) {
     // Local Dev
-    axios.delete('http://localhost:5000/comments/' + id)
-    // axios.delete('/comments/' + id)
+    // axios.delete('http://localhost:5000/comments/' + id)
+    axios.delete('/comments/' + id)
       .then(response => { console.log(response.data)});
 
     this.setState({

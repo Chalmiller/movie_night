@@ -48,8 +48,8 @@ export default class CreateMovie extends Component {
 
     componentDidMount() {
         // Local Dev
-        axios.get("http://localhost:5000/users")
-        // axios.get("/users")
+        // axios.get("http://localhost:5000/users")
+        axios.get("/users")
             .then(res => {
                 if (res.data.length > 0) {
                     this.setState({
@@ -114,8 +114,8 @@ export default class CreateMovie extends Component {
                 movie.genre = response.data.Genre
                 movie.poster = response.data.Poster
                 // Local Dev
-                return axios.post('http://localhost:5000/movies/add', movie)
-                // return axios.post('/movies/add', movie)
+                // return axios.post('http://localhost:5000/movies/add', movie)
+                return axios.post('/movies/add', movie)
             }).then(response => console.log(response.data))
         
 

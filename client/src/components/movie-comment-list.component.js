@@ -27,10 +27,9 @@ export default class MovieCommentList extends Component {
   componentDidMount() {
     console.log(this.state.id)
     // Local Dev
-    axios.get('http://localhost:5000/movies/' + this.state.id)
-    // axios.get('/comments/')
+    // axios.get('http://localhost:5000/movies/' + this.state.id)
+    axios.get('/comments/')
       .then(response => this.setState({ comments: response.data.comment }))
-        // this.setState({ comments: response.data })
       .catch((error) => {
         console.log(error);
       })
@@ -38,8 +37,8 @@ export default class MovieCommentList extends Component {
 
   deleteMovieComment(id) {
     // Local Dev
-    axios.delete('http://localhost:5000/movies/' + id)
-    // axios.delete('/comments/' + id)
+    // axios.delete('http://localhost:5000/movies/' + id)
+    axios.delete('/comments/' + id)
       .then(response => {console.log(response.data)});
 
     this.setState({
