@@ -7,7 +7,7 @@ const MovieComment = props => (
         <hr />
         <h3 style={{ color: "white" }}>{props.comment.title}</h3>
         <hr />
-        <p style={{ color: "white" }} >{props.comment.comment}</p>
+        <p style={{ color: "white" }} >{props.comment.comments}</p>
         <Link to={"/edit_movie_comment/"+props.comment._id}>edit</Link> | <a href="#" onClick={() => { props.deleteMovieComment(props.movie._id) }}>delete</a>
     </div>
 )
@@ -20,14 +20,6 @@ export default class MovieCommentList extends Component {
     this.state = {
         id: props.props,
         comments: [
-            {
-            title: 'Seed Comment',
-            comment: 'Seed comments'
-            },
-            {
-            title: 'Seed Comment 2',
-            comment: 'Seed comments 2'
-            }
         ]
     };
   }
@@ -37,7 +29,7 @@ export default class MovieCommentList extends Component {
     // Local Dev
     axios.get('http://localhost:5000/movies/' + this.state.id)
     // axios.get('/comments/')
-      .then(response => {console.log(response.data)})
+      .then(response => this.setState({ comments: response.data.comment }))
         // this.setState({ comments: response.data })
       .catch((error) => {
         console.log(error);

@@ -12,7 +12,7 @@ const MovieSchema = new Schema({
     description: {type: String, required: true},
     genre: {type: String, required: true},
     poster: {type: String, required: true},
-    comment: {type: [commentSchema], required: false},
+    comment: {type: [commentSchema], required: false, unique: true},
     date: {type: Date, required: true}
 }, {
     timestamps: true,

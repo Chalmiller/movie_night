@@ -9,10 +9,8 @@ export default class CreateMovieComment extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeComment = this.onChangeComment.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -21,7 +19,10 @@ export default class CreateMovieComment extends Component {
             description: '',
             genre: '',
             poster: '',
-            comment: [],
+            comment: [{
+                title: '',
+                comments: ''
+            }],
             date: new Date(),
             users: []
         }
@@ -58,46 +59,30 @@ export default class CreateMovieComment extends Component {
         )
     }
 
-    onChangeUsername(e) {
-        this.setState({
-            username: e.target.value
-        })
-    }
-
     onChangeTitle(e) {
-        this.setState({
-            title: e.target.value
-        })
+        this.setState({ comment: { ...this.state.comment, title: e.target.value}});
     }
 
     onChangeComment(e) {
-        this.setState({
-            comment: e.target.value
-        })
-    }
-
-    onChangeDate(date) {
-        this.setState({
-            date: date
-        })
+        this.setState({ comment: { ...this.state.comment, comments: e.target.value}});
     }
 
     onSubmit(e) {
         e.preventDefault();
 
-        console.log("Here is the current state" + this.state)
-
-        let movie_comment = {
-            title: this.state.comment.title,
-            comments: this.state.comment.comments
-
+        let comment = {
+            comment: {
+                title: this.state.comment.title,
+                comments: this.state.comment.comments
+            }
         }
+        console.log(this.state);
         
-        axios.post('http://localhost:5000/movies/update/comment/' + this.props.match.params.id, movie_comment)
+        axios.post('http://localhost:5000/movies/update/comment/' + this.props.match.params.id, comment)
         // axios.post('/movies/update/' + this.props.match.params.id, movie)
             .then(res => console.log(res.data));
 
-        window.location = '/movies/' + this.props.match.params.id;
+        // window.location = '/movies/' + this.props.match.params.id;
     }
 
     render() {
@@ -113,28 +98,11 @@ export default class CreateMovieComment extends Component {
                     <Collapsible className="navbar-brand" trigger="Comment -- (Click to unfold)">
                         <form onSubmit={this.onSubmit}>
                             <div className='form-group'>
-                                <label style={{ color: "white" }}>Username: </label>
-                                <select ref='userInput'
-                                        required 
-                                        className='form-control'
-                                        value={this.state.username}
-                                        onChange={this.onChangeUsername}>
-                                {
-                                    this.state.users.map(function(user) {
-                                        return <option 
-                                        key={user}
-                                        value={user}>{user}
-                                        </option>;
-                                    })
-                                }
-                                </select> 
-                            </div>
-                            <div className='form-group'>
                                 <label style={{ color: "white" }}>Title: </label>
                                 <input type='text'
                                 required
                                 className='form-control'
-                                value={this.state.title}
+                                value={this.state.comment.title}
                                 onChange={this.onChangeTitle} />
                             </div>
                             <div className='form-group'>
@@ -142,7 +110,7 @@ export default class CreateMovieComment extends Component {
                                 <input type='text'
                                 required
                                 className='form-control'
-                                value={this.state.comment}
+                                value={this.state.comment.comments}
                                 onChange={this.onChangeComment} />
                             </div>
                             <div className='form-group'>

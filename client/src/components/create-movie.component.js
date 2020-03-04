@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import gql from 'graphql-tag';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -40,10 +40,7 @@ export default class CreateMovie extends Component {
             description: '',
             genre: '',
             poster: '',
-            comment: [{
-                title: '',
-                comments: ''
-            }],
+            comment: [],
             date: new Date(),
             users: []
         }
