@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
@@ -14,52 +14,59 @@ import CreateComment from './components/create-comment.component.js';
 import CreateMovieComment from './components/movie-comment.component';
 import Logo from './components/logo.component';
 
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-function App() {
-  return (
-    <div className="background">
-      <Router>
-        <div className="container">
-          <Particles className='particles' params={{
-                    "particles": {
-                        "line_linked": {
-                                    "color":"#FFFFFF"
-                                    },
-                        "number": {
-                            "value": 150
-                        },
-                        "size": {
-                            "value": 5
-                        }
-                    },
-                    "interactivity": {
-                        "events": {
-                            "onhover": {
-                                "enable": true,
-                                "mode": "repulse"
-                            }
-                        }
-                    }
-                }}
-                style={{
-                        width: '100%',
-                        background: `#39191c` 
-                 }} />
-          <Logo />
-          <Navbar />
-          <br />
-          <Route path='/' exact component={MovieNight} />
-          <Route path='/movies' exact component={MovieList} />
-          <Route path='/movies/:id' exact component={CreateMovieComment} />
-          <Route path='/edit_movie/:id' exact component={EditMovie} />
-          {/* <Route path='/edit_comment/:id' exact component={EditComment} /> */}
-          <Route path='/comments' exact component={CreateComment} />
-          <Route path='/create' exact component={CreateMovie} />
-          <Route path='/user' exact component={CreateUser} />
-        </div>
-      </Router>
-    </div>
-  );
+  componentDidMount() {
+    console.log(this.props.store.getState());
+  }
+
+  render() {
+    return (
+      <div className="background">
+        <Router>
+          <div className="container">
+            <Particles className='particles' params={{
+                      "particles": {
+                          "line_linked": {
+                                      "color":"#FFFFFF"
+                                      },
+                          "number": {
+                              "value": 150
+                          },
+                          "size": {
+                              "value": 5
+                          }
+                      },
+                      "interactivity": {
+                          "events": {
+                              "onhover": {
+                                  "enable": true,
+                                  "mode": "repulse"
+                              }
+                          }
+                      }
+                  }}
+                  style={{
+                          width: '100%',
+                          background: `#39191c` 
+                  }} />
+            <Logo />
+            <Navbar />
+            <br />
+            <Route path='/' exact component={MovieNight} />
+            <Route path='/movies' exact component={MovieList} />
+            <Route path='/movies/:id' exact component={CreateMovieComment} />
+            <Route path='/edit_movie/:id' exact component={EditMovie} />
+            {/* <Route path='/edit_comment/:id' exact component={EditComment} /> */}
+            <Route path='/comments' exact component={CreateComment} />
+            <Route path='/create' exact component={CreateMovie} />
+            <Route path='/user' exact component={CreateUser} />
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
-
-export default App;

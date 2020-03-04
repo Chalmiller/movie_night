@@ -16,7 +16,7 @@ const Movie = props => (
     <td style={{ color: "white" }}>{props.movie.genre}</td>
     <td style={{ color: "white" }}>{props.movie.date.substring(0,10)}</td>
     <td>
-      <Link to={"/edit_movie/"+props.movie._id}>edit</Link> | <a href="#" onClick={() => { props.deleteMovie(props.movie._id) }}>delete</a>
+      <Link to={"/edit_movie/"+props.movie._id}>edit</Link> | <a href="/#" onClick={() => { props.deleteMovie(props.movie._id) }}>delete</a>
     </td>
   </tr>
 )

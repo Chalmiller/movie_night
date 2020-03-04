@@ -8,7 +8,7 @@ const MovieComment = props => (
         <h3 style={{ color: "white" }}>{props.comment.title}</h3>
         <hr />
         <p style={{ color: "white" }} >{props.comment.comments}</p>
-        <Link to={"/edit_movie_comment/"+props.comment._id}>edit</Link> | <a href="#" onClick={() => { props.deleteMovieComment(props.movie._id) }}>delete</a>
+        <Link to={"/edit_movie_comment/"+props.comment._id}>edit</Link> | <a href="/#" onClick={() => { props.deleteMovieComment(props.movie._id) }}>delete</a>
     </div>
 )
 

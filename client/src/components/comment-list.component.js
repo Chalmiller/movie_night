@@ -9,7 +9,7 @@ const Comment = props => (
         <hr />
         <p style={{ color: "white" }} >{props.comment.comment}</p>
         <p style={{ color: "white" }}>{props.comment.date.substring(0,10)}</p>
-        <Link to={"/edit_comment/"+props.comment._id}>edit</Link> | <a href="#" onClick={() => { props.deleteComment(props.movie._id) }}>delete</a>
+        <Link to={"/edit_comment/"+props.comment._id}>edit</Link> | <a href="/#" onClick={() => { props.deleteComment(props.movie._id) }}>delete</a>
     </div>
 )
 
