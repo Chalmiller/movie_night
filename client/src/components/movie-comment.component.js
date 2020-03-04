@@ -79,7 +79,7 @@ export default class CreateMovieComment extends Component {
         console.log(this.state);
         
         // axios.post('http://localhost:5000/movies/update/comment/' + this.props.match.params.id, comment)
-        axios.post('/movies/update/' + this.props.match.params.id, movie)
+        axios.post('/movies/update/' + this.props.match.params.id, comment)
             .then(res => console.log(res.data));
 
         window.location = '/movies/' + this.props.match.params.id;
