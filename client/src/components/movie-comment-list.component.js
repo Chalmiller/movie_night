@@ -19,8 +19,7 @@ export default class MovieCommentList extends Component {
 
     this.state = {
         id: props.props,
-        comments: [
-        ]
+        comments: []
     };
   }
 
@@ -28,7 +27,7 @@ export default class MovieCommentList extends Component {
     console.log(this.state.id)
     // Local Dev
     // axios.get('http://localhost:5000/movies/' + this.state.id)
-    axios.get('/movies/')
+    axios.get('/movies/' + this.state.id)
       .then(response => this.setState({ comments: response.data.comment }))
       .catch((error) => {
         console.log(error);
