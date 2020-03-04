@@ -21,10 +21,7 @@ export default class CreateMovieComment extends Component {
             description: '',
             genre: '',
             poster: '',
-            comment: {
-                title: '',
-                comments: ''
-            },
+            comment: {},
             date: new Date(),
             users: []
         }
@@ -44,7 +41,6 @@ export default class CreateMovieComment extends Component {
                     comment: res.data.comment,
                     date: new Date(res.data.date)
                 })
-                console.log(this.state);
             })
             .catch(err => console.log(err));
 

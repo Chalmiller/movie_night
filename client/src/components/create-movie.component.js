@@ -112,6 +112,7 @@ export default class CreateMovie extends Component {
         
         axios.get(uri)
             .then(response => {
+                console.log(response);
                 movie.description = response.data.Plot
                 movie.genre = response.data.Genre
                 movie.poster = response.data.Poster

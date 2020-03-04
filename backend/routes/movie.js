@@ -46,15 +46,9 @@ router.route('/update/:id').post((req, res) => {
 router.route('/update/comment/:id').post((req, res) => {
     Movie.findById(req.params.id)
         .then(movie => {
-            movie.username = req.body.username;
-            movie.title = req.body.title;
-            movie.description = req.body.description;
-            movie.genre = req.body.genre;
-            movie.poster = req.body.poster;
-            movie.comment = req.body.comment;
-            movie.date = new Date(req.body.date);
-
-            movie.save()
+            movie.comment.title = req.body.comment.title;
+            movie.comment.comments = req.body.comment.comments;
+            movie.update({ $push: { comment: movie.comment } })
             .then(() => res.json('Movie updated!'))
             .catch(err => res.status(400).json('Error: ' + err));
         })
